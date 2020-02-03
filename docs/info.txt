@@ -1,0 +1,2 @@
+AJAX se usa como script en la pagina html.
+El cual hace un llamado a un API. 

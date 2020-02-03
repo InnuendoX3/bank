@@ -2,6 +2,7 @@
 
 class Person
 {
+    private $id;
     private $first_name;
     private $last_name;
     private $username;
@@ -22,6 +23,11 @@ class Person
         $stmt->execute([$id]);
         $results = $stmt->fetch();
         return $results;
+    }
+
+    public function transfer()
+    {
+        
     }
 
 }
