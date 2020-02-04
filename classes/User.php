@@ -71,4 +71,16 @@ class User
         return $users_arr;
     }
 
+    public function getUser($id)
+    {
+        $db = $this->conn->connect();
+
+        $sql = ("SELECT * FROM vw_users WHERE id = ?");
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$id]);
+        $results = $stmt->fetch();
+        
+        return $results;
+    }
+
 }

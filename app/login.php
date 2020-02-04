@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <?php require_once "./partials/meta_jquery.php"; ?>
-    <script src="./scripts/login.js"></script>
-    <title>Bank</title>
-</head>
+
+<?php require_once "./partials/head_jquery.php"; ?>
+
 <body>
     <h3>Login as</h3>
-    <select name="" id="usersDropdown">
-        <!-- Here AJAX gets the users -->
-    </select>
-    <button id="botoncito">Login</button>
-
+    <form action="/bank/app/userPage.php" method="post">
+        <select name="userId" id="usersDropdown">
+            <option value="" disabled selected>Choose an user</option>
+            <!-- Here AJAX gets the users -->
+        </select>
+        <input type="submit" id="botoncito" value="Login" name="send">   
+    </form>
+    
+    <script src="./scripts/login.js"></script>
 </body>
 </html>
