@@ -45,7 +45,7 @@ class DataBase
 
         $nrRows = $stmt->rowCount();
 
-        if($nrRows > 0) {
+        if ($nrRows > 0) {
             $users_arr = array();
             $users_arr["records"] = array();
             $users_arr["number rows"] = $nrRows;

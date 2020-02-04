@@ -11,27 +11,20 @@
     </script>
     <script>
 
-        $( document ).ready(function() {
-            $( "#botoncito" ).on( "click", function( event ) {
-                console.log("Botoncito clicked")
-                $.ajax({
-                    url: 'http://gohan.dev.co/bank/API/products/users.php',
-                    success: function(data) {
-                        // data = JSON.parse(data);
-                        let users = data.records;
-                        for (const user of users) {
-                            let name = `${user.firstName} ${user.lastName}`;
-                            let id = user.id;
-                            $("#usersDropdown").append(`<option value="${id}">${name}</option>`)
-                            console.log(name);
-                            
-                        }
-                        
-                        console.log(data);
-                        
-                        //$("tbody").append(`<tr><td>10</td><td>${firstName}</td><td>${lastName}</td><td>${email}</td><td><button type="button" class="btn btn-danger">Remove</button></td></tr>`);
+        $( document ).ready(function() {            
+            $.ajax({
+                url: 'http://gohan.dev.co/bank/API/products/users.php',
+                success: function(data) {
+                    // data = JSON.parse(data);
+                    let users = data.records;
+                    for (const user of users) {
+                        let name = `${user.firstName} ${user.lastName}`;
+                        let id = user.id;
+                        $("#usersDropdown").append(`<option value="${id}">${name}</option>`)
+                        // console.log(name);                        
                     }
-                });
+                    // console.log(data);
+                }
             });
         });
 
@@ -41,11 +34,9 @@
 <body>
     <h3>Login as</h3>
     <select name="" id="usersDropdown">
-        
+        <!-- Here AJAX gets the users -->
     </select>
-    <button id="botoncito">Hola</button>
-
-
+    <button id="botoncito">Login</button>
 
 </body>
 </html>
