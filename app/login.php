@@ -13,7 +13,7 @@
 
         $( document ).ready(function() {            
             $.ajax({
-                url: 'http://gohan.dev.co/bank/API/products/users.php',
+                url: 'http://gohan.dev.co/bank/API/providers/users.php',
                 success: function(data) {
                     // data = JSON.parse(data);
                     let users = data.records;
