@@ -15,8 +15,14 @@ if (isset($_POST['send'])) {
 <?php require_once "./partials/head_jquery.php"; ?>
 
 <body>
-    <h1>Aqui va el nombre del usuario</h1>
+    <h1 id="name"></h1>
     <h2><?php echo $selected_user_id ?></h2>
-    <h2>Saldo</h2>
+    <h2 id="saldo">Saldo</h2>
+
+    <script>
+        // Saves the PHP ID variable to  a JS variable for AJAX function
+        let id = <?php echo $selected_user_id ?>
+    </script>
+    <script src="./scripts/userPage.js"></script>
 </body>
 </html>
