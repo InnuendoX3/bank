@@ -43,14 +43,13 @@ class DataBase
         $stmt = $db->prepare($sql);
         $stmt->execute();
 
-
         $nrRows = $stmt->rowCount();
 
         if($nrRows > 0) {
             $users_arr = array();
             $users_arr["records"] = array();
-            $users_arr["NumberRows"] = $nrRows;
-            $users_arr["Response"] = 0;
+            $users_arr["number rows"] = $nrRows;
+            $users_arr["response"] = 0;
 
             while ($row = $stmt->fetch()) {
                 // extract row
