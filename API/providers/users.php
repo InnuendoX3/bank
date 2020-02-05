@@ -6,7 +6,7 @@ header('Content-Type: application/json');
 
 $db = new DataBase();
 $user = new User($db);
-$users = $user->getAllUsers();
+$users = $user->getAllUsersEver();
 
 if ($users["response"] == 200) {
     http_response_code(200);

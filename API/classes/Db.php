@@ -40,7 +40,7 @@ class DataBase
             $dsn = "mysql:host=$this->host;port=$this->port;dbname=$this->db;charset=$this->charset";
             $conn = new PDO($dsn, $this->user, $this->pass);
             $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-            echo "Connection OK!";
+            // echo "Connection OK!";
             return $conn;
             //Om det blir error så kan felmeddelandet visas på sidan
         } catch (PDOException $e) {
@@ -49,5 +49,5 @@ class DataBase
     }
 }
 
-$db = new DataBase();
-$db->connect();
+/* $db = new DataBase();
+$db->connect(); */

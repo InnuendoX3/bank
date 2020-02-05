@@ -18,10 +18,7 @@ session_start();
     <h3><a href="">Make a transfer</a></h3>
     <h3><a href="">Logout</a></h3>
 
-    <script>
-        // Saves the PHP ID variable to  a JS variable for AJAX function
-        let id = <?php echo $selected_user_id ?>
-    </script>
-    <script src="./scripts/userPage.js"></script>
+
+    <script src=""></script>
 </body>
 </html>
