@@ -1,26 +1,10 @@
 $( document ).ready(function() {            
-   /* function callUserData() {
-        $.ajax({
-            url: `http://gohan.dev.co/bank/API/providers/user.php?id=${id}`,
-            success: function(data) {
-                // data = JSON.parse(data);
-                console.log("entra al primerx ajax");
-                console.log(data);
-                // let users = data.records;
-                let id = user.id;
-                let name = `${data.firstName} ${data.lastName}`;
-                let saldo = `${data.balance} ${data.currency}`;
-                let phone = data.mobilephone
 
-                $("#name").html(name);
-                $("#saldo").html(saldo);
-                console.log(saldo);                        
-
-                // console.log(data);
-            }
-        });
-    } */
-
+    /**
+     *  Get all users with all info each.
+     *  Save each as JS object, make an array of them
+     *  Use objects to fill info on page.  
+     * */
     $.ajax({
     url: 'http://gohan.dev.co/bank/API/providers/users.php',
         success: function(data) {
@@ -76,3 +60,26 @@ $( document ).ready(function() {
     });
     
 });
+
+
+/* function callUserData() {
+    $.ajax({
+        url: `http://gohan.dev.co/bank/API/providers/user.php?id=${id}`,
+        success: function(data) {
+            // data = JSON.parse(data);
+            console.log("entra al primerx ajax");
+            console.log(data);
+            // let users = data.records;
+            let id = user.id;
+            let name = `${data.firstName} ${data.lastName}`;
+            let saldo = `${data.balance} ${data.currency}`;
+            let phone = data.mobilephone
+
+            $("#name").html(name);
+            $("#saldo").html(saldo);
+            console.log(saldo);                        
+
+            // console.log(data);
+        }
+    });
+} */

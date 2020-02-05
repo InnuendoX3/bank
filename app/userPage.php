@@ -32,7 +32,7 @@ if (isset($_POST['send'])) {
 
     <script>
         // Saves the PHP ID variable to  a JS variable for AJAX function
-        let idFromLogin = <?php echo $selected_user_id ?>
+        let idFromLogin = <?php echo $selected_user_id ?> // Try Session UserID ?
     </script>
     <script src="./scripts/userPage.js"></script>
 </body>
