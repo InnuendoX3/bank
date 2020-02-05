@@ -1,3 +1,17 @@
+<?php
+
+session_start();
+/* if (!isset($_SESSION['login'])) {
+    header("location: userPage.php");
+} */
+
+if (isset($_REQUEST['q'])) {
+    session_destroy();
+    echo "You logged out (Session destroyed)";
+    //header('location: index.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

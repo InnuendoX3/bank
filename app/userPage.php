@@ -20,7 +20,7 @@ if (isset($_POST['send'])) {
     <h1 id="name"></h1>
     <h2>Saldo: <span id="saldo"></span></h2>
     <h3><a href="transfer.php">Make a transfer</a></h3>
-    <h3><a href="?q=logout">Logout</a></h3>
+    <h3><a href="/bank/app/login.php?q=logout">Logout</a></h3>
 
     <script>
         // Saves the PHP ID variable to  a JS variable for AJAX function
