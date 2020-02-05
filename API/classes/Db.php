@@ -30,9 +30,10 @@ class DataBase
 
         $this->host = $_ENV["DB_HOST"];
         $this->port = $_ENV["DB_PORT"];
-        $this->db = $_ENV["DB_DATABASE"];
         $this->user = $_ENV["DB_USER"];
+        $this->socket = $_ENV["DB_SOCKET"];
         $this->pass = $_ENV["DB_PASS"];
+        $this->db = $_ENV["DB_DATABASE"];
         $this->charset = 'utf8mb4';
        
 

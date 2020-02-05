@@ -7,7 +7,7 @@ session_start();
 
 if (isset($_REQUEST['q'])) {
     session_destroy();
-    echo "You logged out (Session destroyed)";
+    echo "You logged out (In DEV terms: Session destroyed)";
     //header('location: index.php');
 }
 ?>
@@ -19,7 +19,7 @@ if (isset($_REQUEST['q'])) {
 
 <body>
     <h3>Login as</h3>
-    <form action="/bank/app/userPage.php" method="post">
+    <form action="/bank/app/userPage.php" method="POST">
         <select name="userId" id="usersDropdown">
             <option value="" disabled selected>Choose an user</option>
             <!-- Here AJAX gets the users -->
