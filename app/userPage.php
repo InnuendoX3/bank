@@ -3,11 +3,10 @@
 session_start();
 
 if (isset($_POST['send'])) {
-    $selected_user_id = $_POST['userId'];
     $_SESSION['login'] = true;
     $_SESSION['id'] = $_POST['userId'];
-    //echo $selected_user_id;
 }
+$selected_user_id = $_SESSION['id'];
 
 ?>
 
@@ -20,7 +19,7 @@ if (isset($_POST['send'])) {
     <h1 id="name"></h1>
     <a href="/bank/app/login.php?q=logout">Logout</a>
     <h2>Saldo: <span id="saldo"></span></h2>
-    <form action="/bank/app/transfer.php" method="post">
+    <form action="/bank/API/providers/transfer.php" method="post">
         <label>Select recipient </label>
         <select name="subUserId" id="usersDropdown">
             <option value="" disabled selected>Choose an user</option>

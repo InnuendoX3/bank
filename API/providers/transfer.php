@@ -1,30 +1,67 @@
 <?php
 
+session_start();
+
+if (isset($_POST['send'])) {
+    $bigUserId = $_SESSION['id'];
+    $subUserId = $_POST['subUserId'];
+    $amount = $_POST['amount'];
+}
+
+echo $bigUserId;
+echo $subUserId;
+echo $amount;
+
 include '../classes/Db.php';
 include '../classes/User.php';
 include '../classes/Account.php';
 include '../classes/Transfer.php';
-header('Content-Type: application/json');
+//header('Content-Type: application/json');
 
 $db = new DataBase();
-$user1 = new User($db);
-$user1->constructUser(9);
-$cuenta1 = new Account($user1);
-$user2 = new User($db);
-$user2->constructUser(3);
-$cuenta2 = new Account($user2);
-echo $cuenta1->getUserId() . PHP_EOL;
-echo $cuenta1->getBalance() . $cuenta1->getCurrency() . PHP_EOL;
-echo $cuenta2->getUserId() . PHP_EOL;
-echo $cuenta2->getBalance() . $cuenta2->getCurrency() . PHP_EOL;
+$bigUser = new User($db);
+$bigUser->constructUser($bigUserId);
+$bigUserAccount = new Account($bigUser);
 
-$transferencia = new Transfer($cuenta1, $cuenta2, 50099, $db);
+$message = '';
+
+$subUser = new User($db);
+$subUser->constructUser($subUserId);
+$subUserAccount = new Account($subUser);
+echo $bigUserAccount->getUserId() . PHP_EOL;
+echo $bigUserAccount->getBalance() . $bigUserAccount->getCurrency() . PHP_EOL;
+echo $subUserAccount->getUserId() . PHP_EOL;
+echo $subUserAccount->getBalance() . $subUserAccount->getCurrency() . PHP_EOL;
+
+$transferencia = new Transfer($bigUserAccount, $subUserAccount, $amount, $db);
+
+$currency = $bigUserAccount->getCurrency();
+$toAccountId = $subUserAccount->getAccountId();
+$balance = $bigUserAccount->getBalance();
+
 if ($transferencia->isSaldoEnough()) {
     $transferencia->makeTransfer();
-    echo "Es suficiente";
+
+    $message = "You transfered $amount $currency to 
+                account nr. $toAccountId";
 } else {
-    echo "No es suficiente";
+    $message = "You cannot transfer $amount $currency. Your balance is: $balance $currency";
 }
 
+?>
 
-//print_r($user->constructUser(9));
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transfer</title>
+</head>
+<body>
+    <p><?php echo $message ?></p>
+    <a href="/bank/app/userPage.php">Go back</a>
+    
+</body>
+</html>
+
