@@ -17,15 +17,15 @@ if (isset($_REQUEST['q'])) {
 
 <?php require_once "./partials/head_jquery.php"; ?>
 
-<body class="d-flex justify-content-center">
-    <div class="container d-flex flex-column justify-content-center">
+<body class="row d-flex justify-content-center text-center">
+    <div class="mt-5">
         <h3>Login as</h3>
         <form action="/bank/app/userPage.php" method="POST">
-            <select name="userId" id="usersDropdown">
+            <select name="userId" id="usersDropdown" class="form-control">
                 <option value="" disabled selected>Choose an user</option>
                 <!-- Here AJAX gets the users -->
             </select>
-            <input type="submit" id="botoncito" value="Login" name="send">   
+            <input type="submit" id="botoncito" value="Login" name="send" class="form-control btn btn-primary">   
         </form>
         <?php if (isset($message)) { ?>
             <p> <?php echo $message; ?> </p>
