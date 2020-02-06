@@ -41,7 +41,7 @@ class User
         return $results["id"];
     }
 
-    public function getId()
+    public function getUserId()
     {
         return $this->id;
     }

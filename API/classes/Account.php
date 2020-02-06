@@ -2,15 +2,15 @@
 
 class Account
 {
-    private $account_nr;
     private $user_id;
+    private $account_nr;
     private $balance;
     private $currency;
 
     public function __construct(User $user)
     {
-        $this->account_nr = $user->getId();
-        $this->user_id = $user->getAccountId();
+        $this->user_id = $user->getUserId();
+        $this->account_nr = $user->getAccountId();
         $this->balance = $user->getBalance();
         $this->currency = $user->getCurrency();
 

@@ -38,7 +38,21 @@ class Transfer
      */
     public function makeTransfer()
     {
-        // Hacer transferencia en DB
-    }
+        try {
+            $db = $this->conn->connect();
 
+            $sql = "INSERT INTO transactions (from_amount, from_account, to_amount, to_account)
+                    VALUES (:famount, :faccount, :tamount, :taccount)";
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(':famount', $this->from_amount);
+            $stmt->bindParam(':faccount', $this->from_account);
+            $stmt->bindParam(':tamount', $this->to_amount);
+            $stmt->bindParam(':taccount', $this->to_account);
+
+            $stmt->execute();
+            echo "New records created successfully";
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
 }

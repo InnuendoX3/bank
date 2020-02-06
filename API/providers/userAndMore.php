@@ -18,8 +18,9 @@ echo $cuenta1->getBalance() . $cuenta1->getCurrency() . PHP_EOL;
 echo $cuenta2->getUserId() . PHP_EOL;
 echo $cuenta2->getBalance() . $cuenta2->getCurrency() . PHP_EOL;
 
-$transferencia = new Transfer($cuenta1, $cuenta2, 50974, $db);
+$transferencia = new Transfer($cuenta1, $cuenta2, 50099, $db);
 if ($transferencia->isSaldoEnough()) {
+    $transferencia->makeTransfer();
     echo "Es suficiente";
 } else {
     echo "No es suficiente";
