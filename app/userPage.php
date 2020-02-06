@@ -8,6 +8,10 @@ if (isset($_POST['send'])) {
 }
 $selected_user_id = $_SESSION['id'];
 
+/* echo "<pre>";
+print_r($_POST);
+echo "</pre>"; */
+
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +34,7 @@ $selected_user_id = $_SESSION['id'];
         <p>Mobilephone: <span id="phone"></span></p>
         <label for="amount">Enter amount </label>
         <input type="number" name="amount" id="">
+        <input type="hidden" name="bigUserId" value="<?php echo $_SESSION['id'] ?>">
         <input type="submit" id="botoncito" value="transfer" name="send"> 
     </form>
 

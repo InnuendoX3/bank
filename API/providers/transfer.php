@@ -1,51 +1,53 @@
 <?php
 
-session_start();
-
-if (isset($_POST['send'])) {
-    $bigUserId = $_SESSION['id'];
-    $subUserId = $_POST['subUserId'];
-    $amount = $_POST['amount'];
-}
-
-echo $bigUserId;
-echo $subUserId;
-echo $amount;
-
 include '../classes/Db.php';
 include '../classes/User.php';
 include '../classes/Account.php';
 include '../classes/Transfer.php';
-//header('Content-Type: application/json');
 
+
+if (isset($_POST['send'])) {
+    $bigUserId = $_POST['bigUserId'];
+    $subUserId = $_POST['subUserId'];
+    $amount = $_POST['amount'];
+}
+
+/* echo "<pre>";
+print_r($_POST);
+echo "</pre>"; */
+
+// Create database
 $db = new DataBase();
+
+// Create User and Account: User that logged in.
 $bigUser = new User($db);
 $bigUser->constructUser($bigUserId);
 $bigUserAccount = new Account($bigUser);
 
-$message = '';
-
+// Create User and Account: User choosed to transfer
 $subUser = new User($db);
 $subUser->constructUser($subUserId);
 $subUserAccount = new Account($subUser);
-echo $bigUserAccount->getUserId() . PHP_EOL;
-echo $bigUserAccount->getBalance() . $bigUserAccount->getCurrency() . PHP_EOL;
-echo $subUserAccount->getUserId() . PHP_EOL;
-echo $subUserAccount->getBalance() . $subUserAccount->getCurrency() . PHP_EOL;
 
+// Create transfer
 $transferencia = new Transfer($bigUserAccount, $subUserAccount, $amount, $db);
 
+// Some variables to print out on $message
 $currency = $bigUserAccount->getCurrency();
 $toAccountId = $subUserAccount->getAccountId();
 $balance = $bigUserAccount->getBalance();
 
+$message = '';
+
+// If enough money... do transfer. Save message.
 if ($transferencia->isSaldoEnough()) {
     $transferencia->makeTransfer();
 
     $message = "You transfered $amount $currency to 
                 account nr. $toAccountId";
 } else {
-    $message = "You cannot transfer $amount $currency. Your balance is: $balance $currency";
+    $message = "You cannot transfer $amount $currency. 
+                Your balance is: $balance $currency";
 }
 
 ?>
