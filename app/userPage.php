@@ -20,14 +20,18 @@ if (isset($_POST['send'])) {
     <h1 id="name"></h1>
     <a href="/bank/app/login.php?q=logout">Logout</a>
     <h2>Saldo: <span id="saldo"></span></h2>
-    <!-- <h3><a href="transfer.php">Make a transfer</a></h3> -->
     <form action="/userPage.php" method="post">
+        <label>Select recipient </label>
         <select name="userId" id="usersDropdown">
             <option value="" disabled selected>Choose an user</option>
             <!-- Here AJAX gets the users -->
         </select>
-        
-        <input type="submit" id="botoncito" value="Login" name="send"> 
+        <br>
+        <p>Account nr. <span id="account"></span></p>
+        <p>Mobilephone: <span id="phone"></span></p>
+        <label for="amount">Enter amount </label>
+        <input type="number" name="amount" id="">
+        <input type="submit" id="botoncito" value="transfer" name="send"> 
     </form>
 
     <script>

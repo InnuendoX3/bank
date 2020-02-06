@@ -55,31 +55,24 @@ $( document ).ready(function() {
                 let id = otherUser.id;
                 $("#usersDropdown").append(`<option value="${id}">${name}</option>`);
             }
+
+            $("#usersDropdown").change(function(){
+                var selectedID = $(this).children("option:selected").val();
+
+                function byUserId(u) {
+                    return u.id == selectedID;
+                }
+    
+                // Get user object by ID
+                let subUser = users.find(byUserId);
+
+                $("#account").html(subUser.accountId);
+                $("#phone").html(subUser.phone);
+
+                //alert("You have selected userID - " + selectedID);
+            });
             
         }
     });
     
 });
-
-
-/* function callUserData() {
-    $.ajax({
-        url: `http://gohan.dev.co/bank/API/providers/user.php?id=${id}`,
-        success: function(data) {
-            // data = JSON.parse(data);
-            console.log("entra al primerx ajax");
-            console.log(data);
-            // let users = data.records;
-            let id = user.id;
-            let name = `${data.firstName} ${data.lastName}`;
-            let saldo = `${data.balance} ${data.currency}`;
-            let phone = data.mobilephone
-
-            $("#name").html(name);
-            $("#saldo").html(saldo);
-            console.log(saldo);                        
-
-            // console.log(data);
-        }
-    });
-} */
