@@ -48,7 +48,6 @@ $( document ).ready(function() {
 
             // Filter Big User from others.
             let otherUsers = users.filter(notUserId);
-            console.log(otherUsers);
 
             for (const otherUser of otherUsers) {
                 let name = `${otherUser.firstName} ${otherUser.lastName}`;

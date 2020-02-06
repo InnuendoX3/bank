@@ -43,5 +43,7 @@ echo "</pre>"; */
         let idFromLogin = <?php echo $selected_user_id ?> // Try Session UserID ?
     </script>
     <script src="./scripts/userPage.js"></script>
+
+    <?php require_once "./partials/scripts_jqueryB.php "; ?>
 </body>
 </html>
