@@ -20,9 +20,9 @@ if (isset($_POST['send'])) {
     <h1 id="name"></h1>
     <a href="/bank/app/login.php?q=logout">Logout</a>
     <h2>Saldo: <span id="saldo"></span></h2>
-    <form action="/userPage.php" method="post">
+    <form action="/bank/app/transfer.php" method="post">
         <label>Select recipient </label>
-        <select name="userId" id="usersDropdown">
+        <select name="subUserId" id="usersDropdown">
             <option value="" disabled selected>Choose an user</option>
             <!-- Here AJAX gets the users -->
         </select>
